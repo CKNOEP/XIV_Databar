@@ -1,7 +1,7 @@
 ## Interface: 20501
 ## Title: XIV_Databar Classic
 ## Author: Vicious, Lancestre
-## Version: v9.05.002
+## Version: v2.05.012
 ## Notes: Adds a databar by the request of |cffffffffu/sammojo|r on Reddit, Icons made by |cffffffffu/sammojo|r. Previously maintained by |cff00FF99Saxitoxin|r, then |cffbbbbbbMille|cff990000XIV|r and now |c03dbfcbbVicious|r.
 ## SavedVariables: TEST_CONFIG, XIVBarDB
 ## X-Issues: 
