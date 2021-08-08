@@ -802,7 +802,7 @@ function MenuModule:CreateClickFunctions()
 
   self.functions.menu = function(self, button, down)
     if (not xb.db.profile.modules.microMenu.combatEn) and InCombatLockdown() then return; end
-    if button == "LeftButton" then
+   if button == "LeftButton" then
       ToggleFrame(GameMenuFrame)
     elseif button == "RightButton" then
       if IsShiftKeyDown() then
@@ -810,7 +810,10 @@ function MenuModule:CreateClickFunctions()
       else
         ToggleFrame(AddonList)
       end
-    end
+    elseif button == "MiddleButton" then
+	 --ToggleFrame(GameMenuFrame)
+	 XIVBar:ToggleConfig()
+	end
   end; --menu
 
   self.functions.chat = function(self, button, down)
@@ -869,7 +872,8 @@ function MenuModule:CreateClickFunctions()
   self.functions.lfg = function(self, button, down)
     if (not xb.db.profile.modules.microMenu.combatEn) and InCombatLockdown() then return; end
     if button == "LeftButton" then
-  		ToggleLFDParentFrame()
+		ShowUIPanel(LFGParentFrame);
+  		--ToggleLFDParentFrame()
   	end
   end; --lfg
 
@@ -927,7 +931,7 @@ function MenuModule:GetDefaultOptions()
       showGMOTD = false,
       hideSocialText = false,
       osSocialText = 12,
-	    menu = true,
+	  menu = true,
       chat = true,
       guild = true,
       social = true,
@@ -1106,7 +1110,13 @@ function MenuModule:GetConfig()
             get = function() return xb.db.profile.modules.microMenu.talent; end,
             set = function(_, val) xb.db.profile.modules.microMenu.talent = val; self:UpdateMenu(); self:Refresh(); end
           },
-
+		  lfg = {
+            name = L['Show LFG Button'],
+            order = 10,
+            type = "toggle",
+            get = function() return xb.db.profile.modules.microMenu.lfg; end,
+            set = function(_, val) xb.db.profile.modules.microMenu.lfg = val; self:UpdateMenu(); self:Refresh(); end
+          },
           quest = {
             name = L['Show Quests Button'],
             order = 9,

@@ -90,6 +90,7 @@ function XIVBar:OnInitialize()
         handler = XIVBar,
         type = 'group',
         args = {
+
             general = {
                 name = GENERAL_LABEL,
                 type = "group",

@@ -71,8 +71,10 @@ function ArmorModule:RegisterFrameEvents()
       if v.max and v.max > 0 then
         local u20G, u20B = 1, 1
         if v.pc <= 20 then u20G, u20B = 0, 0 end
-        GameTooltip:AddDoubleLine(v.text, string.format('%d/%d (%d%%)', v.cur, v.max, v.pc), r, g, b, 1, u20G, u20B)
-		  end
+        GameTooltip:AddDoubleLine(format('|T%s:14:14:0:0:64:64:4:60:4:60|t %s', GetInventoryItemTexture('player', i),GetInventoryItemLink('player', i)),string.format('%d/%d (%d%%)', v.cur, v.max, v.pc), r, g, b, 1, u20G, u20B )		
+         
+		--GameTooltip:AddDoubleLine(format('|T%s:14:14:0:0:64:64:4:60:4:60|t %s', GetInventoryItemTexture('player', i), GetInventoryItemLink('player', i))..string.format('%d/%d (%d%%)', v.cur, v.max, v.pc), r, g, b, 1, u20G, u20B )		
+		end
 		end
 		GameTooltip:Show()
 	end
@@ -95,7 +97,9 @@ function ArmorModule:RegisterFrameEvents()
 	   --print(event, XIVBar.layerNum, XIVBar.layerLet)
 	   if XIVBar.layerNum and XIVBar.layerLet then
 	   text = ' ' .. '' .. ' Layer #'..XIVBar.layerNum..XIVBar.layerLet
-	   self.armorText:SetText(text)
+	  
+		ArmorModule:UpdateDurabilityText(text)	   
+	   --self.armorText:SetText(text)
 	   end
 	end
 	if event == 'PLAYER_TARGET_CHANGED' then
@@ -103,7 +107,9 @@ function ArmorModule:RegisterFrameEvents()
 	   --print(event, XIVBar.layerNum, XIVBar.layerLet)
 	   if XIVBar.layerNum and XIVBar.layerLet then
 	   text = ' ' .. '' .. ' Layer #'..XIVBar.layerNum..XIVBar.layerLet
-	   self.armorText:SetText(text)
+	   --self.armorText:SetText(text)
+		ArmorModule:UpdateDurabilityText(text)
+	    --self.armorText:SetText(text)
 	   end
     end
   end)
@@ -157,7 +163,8 @@ function ArmorModule:Refresh()
 
   if InCombatLockdown() then
     self:UpdateDurabilityText()
-    return
+   
+	return
   end
 
   local iconSize = xb:GetHeight()
@@ -203,9 +210,10 @@ function ArmorModule:UPDATE_INVENTORY_DURABILITY()
   self:Refresh()
 end
 
-function ArmorModule:UpdateDurabilityText()
+function ArmorModule:UpdateDurabilityText(layer)
   local db =  xb.db.profile.modules.armor
   local text = ''
+
   local lowest = 101 -- store the most broken armor piece's percentage
 
   for i,v in pairs(self.durabilityList) do
@@ -232,10 +240,14 @@ function ArmorModule:UpdateDurabilityText()
     local equippedIlvl= 0
 	
 	
-   text = text .. ' ' .. '' .. ' Layer #'
+   if layer  then 
+   text = text .. ' ' .. '' .. '' .. layer
+   else
+   end
   end
 
   self.armorText:SetText(text)
+ 
 end
 
 

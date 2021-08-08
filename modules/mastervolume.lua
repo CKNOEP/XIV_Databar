@@ -9,7 +9,7 @@ function VolumeModule:GetName()
 end
 
 function VolumeModule:OnInitialize()
-self.frame = nil
+self.frame = nilq
 self.icon = nil
 self.text = nil
 end
@@ -88,9 +88,10 @@ function VolumeModule:RegisterEvents()
 		if button == "LeftButton" then
 		
 		SetCVar( "Sound_MasterVolume", volume + xb.db.profile.modules.MasterVolume.step);
-
+		PlaySound(800);
 		elseif button == "RightButton" then
 		SetCVar( "Sound_MasterVolume", volume - xb.db.profile.modules.MasterVolume.step);
+		PlaySound(800);
 		end
 		volume = tonumber(GetCVar("Sound_MasterVolume"));
 		if volume <=0 then SetCVar( "Sound_MasterVolume", 0); end
@@ -131,7 +132,7 @@ function VolumeModule:Refresh()
 				xOffset = 0
 			end
 		end
-		self.frame:SetPoint('LEFT', parentFrame, relativeAnchorPoint, xOffset, 0)
+		self.frame:SetPoint('LEFT', parentFrame, relativeAnchorPoint, xOffset + 60, 0)
 		self.frame:Show()
 	end
 end

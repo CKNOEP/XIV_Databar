@@ -223,8 +223,9 @@ function GoldModule:RegisterFrameEvents()
     end
 
     GameTooltip:AddLine(" ")
-    GameTooltip:AddDoubleLine(TOTAL, GoldModule:FormatCoinText(totalGold), r, g, b, 1, 1, 1)
-    GameTooltip:AddDoubleLine('<'..L['Left-Click']..'>', L['Toggle Bags'], r, g, b, 1, 1, 1)
+    --GameTooltip:AddDoubleLine(TOTAL, GoldModule:FormatCoinText(totalGold), r, g, b, 1, 1, 1)
+    GameTooltip:AddDoubleLine(TOTAL, moneyWithTexture(totalGold,true), r, g, b, 1, 1, 1)
+	GameTooltip:AddDoubleLine('<'..L['Left-Click']..'>', L['Toggle Bags'], r, g, b, 1, 1, 1)
     GameTooltip:Show()
   end)
 
