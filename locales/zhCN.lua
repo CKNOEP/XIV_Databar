@@ -6,6 +6,7 @@ if not L then return end
 L['Modules'] = "模块";
 L['Left-Click'] = "左键单击";
 L['Right-Click'] = "右键单击";
+L['Mouse-Wheel'] = "鼠标滚轮";
 L['k'] = true; -- short for 1000
 L['M'] = true; -- short for 1000000
 L['B'] = true; -- short for 1000000000

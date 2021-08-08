@@ -6,6 +6,7 @@ if not L then return end
 L['Modules'] = "Модули";
 L['Left-Click'] = "Левая кнопка мыши";
 L['Right-Click'] = "Правая кнопка мыши";
+L['Mouse-Wheel'] = "Колесико мыши";
 L['k'] = "Тыс.";
 L['M'] = "Млн.";
 L['B'] = "Млрд.";

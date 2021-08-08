@@ -6,6 +6,7 @@ if not L then return end
 L['Modules'] = "Modules";
 L['Left-Click'] = "Clic gauche";
 L['Right-Click'] = "Clic droit";
+L['Mouse-Wheel'] = "Roulette de la souris";
 L['k'] = true; -- short for 1000
 L['M'] = "m"; -- short for 1000000
 L['B'] = "M"; -- short for 1000000000

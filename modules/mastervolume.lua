@@ -77,22 +77,24 @@ function VolumeModule:RegisterEvents()
 		end
 		GameTooltip:AddLine("[|cff6699FF"..MASTER_VOLUME.."|r]")
 		GameTooltip:AddLine(" ")
-		GameTooltip:AddDoubleLine("<"..L['Left-Click']..">", "|cffffffff"..BINDING_NAME_MASTERVOLUMEUP.."|r")
-		GameTooltip:AddDoubleLine("<"..L['Right-Click']..">", "|cffffffff"..BINDING_NAME_MASTERVOLUMEDOWN.."|r")
+		GameTooltip:AddDoubleLine("<"..L['Mouse-Wheel']..">", "|cffffffff"..BINDING_NAME_MASTERVOLUMEUP.. " & " ..BINDING_NAME_MASTERVOLUMEDOWN.. "|r")
+		--GameTooltip:AddDoubleLine("<"..L['Right-Click']..">", "|cffffffff"..BINDING_NAME_MASTERVOLUMEDOWN.."|r")
 		GameTooltip:Show()
 	end)
 	
-	self.frame:SetScript("OnClick", function(self, button, down)
+	self.frame:SetScript("OnMouseWheel", function(self, button, down)
 		local volume = tonumber(GetCVar("Sound_MasterVolume"));
+		--print( self , button , down, volume)
+		--if button == "LeftButton" then
 		
-		if button == "LeftButton" then
+		--SetCVar( "Sound_MasterVolume", volume + xb.db.profile.modules.MasterVolume.step);
+		SetCVar( "Sound_MasterVolume", volume + button*xb.db.profile.modules.MasterVolume.step);
 		
-		SetCVar( "Sound_MasterVolume", volume + xb.db.profile.modules.MasterVolume.step);
 		PlaySound(800);
-		elseif button == "RightButton" then
-		SetCVar( "Sound_MasterVolume", volume - xb.db.profile.modules.MasterVolume.step);
-		PlaySound(800);
-		end
+		--elseif button == "RightButton" then
+		--SetCVar( "Sound_MasterVolume", volume - xb.db.profile.modules.MasterVolume.step);
+		--PlaySound(800);
+		--end
 		volume = tonumber(GetCVar("Sound_MasterVolume"));
 		if volume <=0 then SetCVar( "Sound_MasterVolume", 0); end
 		if volume >=1 then SetCVar( "Sound_MasterVolume", 1); end

@@ -5,6 +5,7 @@ local L = AceLocale:NewLocale(AddOnName, "enUS", true, false);
 L['Modules'] = true;
 L['Left-Click'] = true;
 L['Right-Click'] = true;
+L['Mouse-Wheel'] = true; -- "Mouse Wheel";
 L['k'] = true; -- short for 1000
 L['M'] = true; -- short for 1000000
 L['B'] = true; -- short for 1000000000
