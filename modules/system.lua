@@ -255,7 +255,9 @@ function SystemModule:ShowTooltip()
   for i = 1, totalAddons do
     local _, aoName, _ = GetAddOnInfo(i)
     local mem = GetAddOnMemoryUsage(i)
-    table.insert(memTable, {memory = mem, name = aoName})
+    local cpuu = GetAddOnCPUUsage(i)
+	--print(aoName,mem,cpuu)
+	table.insert(memTable, {memory = mem, name = aoName})
   end
 
   table.sort(memTable, function(a, b)

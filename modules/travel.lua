@@ -37,6 +37,7 @@ function TravelModule:OnInitialize()
     183716, -- Venthyr Sinstone
     182773, -- Necrolord Hearthstone
     180290, -- Night Fae Hearthstone
+	184871, -- Dark Portal
   }
 
   self.portButtons = {}
