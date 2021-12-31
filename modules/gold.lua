@@ -220,13 +220,20 @@ function GoldModule:RegisterFrameEvents()
       end
       GameTooltip:AddDoubleLine(charName, moneyWithTexture(goldData.currentMoney), cc_r, cc_g, cc_b, 1, 1, 1)
       totalGold = totalGold + goldData.currentMoney
-    end
+	  if totalGold <0 then
+	  totalGold = totalGold * -1
+	  end
+	  
+
+
+   end
 
     GameTooltip:AddLine(" ")
     --GameTooltip:AddDoubleLine(TOTAL, GoldModule:FormatCoinText(totalGold), r, g, b, 1, 1, 1)
     GameTooltip:AddDoubleLine(TOTAL, moneyWithTexture(totalGold,true), r, g, b, 1, 1, 1)
 	GameTooltip:AddDoubleLine('<'..L['Left-Click']..'>', L['Toggle Bags'], r, g, b, 1, 1, 1)
     GameTooltip:Show()
+	-- print (totalGold*-1)
   end)
 
   self.goldButton:SetScript('OnLeave', function()
@@ -267,6 +274,8 @@ function GoldModule:PLAYER_MONEY()
   isSessionNegative = gdb.sessionMoney < 0
   isDailyNegative = gdb.dailyMoney < 0
   gdb.currentMoney = tmpMoney
+  
+ 
   self:Refresh()
 end
 
