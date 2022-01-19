@@ -1,4 +1,4 @@
-## Interface: 20501
+## Interface: 20503
 ## Title: XIV_Databar Classic
 ## Author: Vicious, Lancestre
 ## Version: v2.05.012
