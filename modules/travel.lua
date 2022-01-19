@@ -100,11 +100,12 @@ function TravelModule:CreateFrames()
   self.portText = self.portText or self.portButton:CreateFontString(nil, 'OVERLAY')
 
   self.portPopup = self.portPopup or CreateFrame('BUTTON', 'portPopup', self.portButton, BackdropTemplateMixin and 'BackdropTemplate')
-  local backdrop = GameTooltip:GetBackdrop()
-  if backdrop and (not self.useElvUI) then
-    self.portPopup:SetBackdrop(backdrop)
-    self.portPopup:SetBackdropColor(GameTooltip:GetBackdropColor())
-    self.portPopup:SetBackdropBorderColor(GameTooltip:GetBackdropBorderColor())
+  --local backdrop = _G.GameTooltip:GetBackdrop() or nil
+  --local backdrop =   SpellTooltip:SetBackdrop(_G.GameTooltip:GetBackdrop() or nil)
+  if not self.useElvUI then
+    --self.portPopup:SetBackdrop(_G.GameTooltip:GetBackdrop() or nil)
+    --self.portPopup:SetBackdropColor(_G.GameTooltip:GetBackdropColor() or nil)
+    --self.portPopup:SetBackdropBorderColor(_G.GameTooltip:GetBackdropBorderColor() or nil)
   end
 end
 
