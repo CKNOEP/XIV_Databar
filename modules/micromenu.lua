@@ -780,7 +780,9 @@ function MenuModule:GuildHover(hoverFunc)
 		    tooltip:SetLineScript(tooltip:GetLineCount(),'OnLeave', function() self.glineHover = false end)
 		    tooltip:SetLineScript(tooltip:GetLineCount(),'OnMouseUp', function(self, _, button)
 		      if button == 'LeftButton' then
-				    if modifierFunc() then C_PartyInfo.InviteUnit(name)
+				    
+					print (name,charName )
+					if modifierFunc() then InviteUnit(""..charName.."")
             else ChatFrame_OpenChat(SLASH_SMART_WHISPER1 .. ' ' .. name .. ' ') end
 			    end
 		    end)
