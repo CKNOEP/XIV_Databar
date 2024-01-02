@@ -235,7 +235,7 @@ function TravelModule:SetHearthColor()
     local hearthActive = true
     for i,v in ipairs(self.hearthstones) do
       if IsUsableItem(v) then
-        if GetItemCooldown(v) == 0 then
+        if C_Container.GetItemCooldown(v) == 0 then
           hearthName, _ = GetItemInfo(v)
           if hearthName ~= nil then
             hearthActive = true

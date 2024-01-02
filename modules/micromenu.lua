@@ -529,14 +529,16 @@ function MenuModule:SocialHover(hoverFunc)
 	if totalBNOnlineFriends then
       -- iterate through every bnet friend - get their info and add the friend as an interactable line in the tooltip
       	  for i = 1, BNGetNumFriends() do
-        --local friendAccInfo = C_BattleNet.GetFriendAccountInfo(i)
-        local friendAccInfo = BNGetFriendInfo(i)
+        local friendAccInfo = C_BattleNet.GetFriendAccountInfo(i)
+        --local friendAccInfo = BNGetFriendInfo(i)
 		local presenceID, presenceName, battleTag, isBattleTagPresence, toonName, toonID, client, isOnline, lastOnline, isAFK, isDND, messageText, noteText, isRIDFriend, broadcastTime, canSoR = BNGetFriendInfo(i)
 		--print(presenceID, presenceName, battleTag, isBattleTagPresence, toonName, toonID, client, isOnline, lastOnline, isAFK, isDND, messageText, noteText, isRIDFriend, broadcastTime, canSoR)
-		--local gameAccount = friendAccInfo.gameAccountInfo
-		local gameAccount = friendAccInfo
+		
+		local gameAccount = friendAccInfo.gameAccountInfo
+		--local gameAccount = friendAccInfo
         -- executes if the friend is online
         --print (presenceID, presenceName, battleTag, isBattleTagPresence, toonName, toonID, client, isOnline, lastOnline, isAFK, isDND, messageText, noteText, isRIDFriend, broadcastTime, canSoR )
+		
 		if isOnline then
           -- if the friend has no battle tag, set it to 'No Tag'
           if not battleTag then
@@ -552,7 +554,7 @@ function MenuModule:SocialHover(hoverFunc)
           local isWoW = false                                      --tracks whether the friend is playing WoW or not, default being that the friend isn't
           local isClassic = false                                  --tracks whether the friend is logged into classic or not, default being that the friend isn't
           local statusIcon = FRIENDS_TEXTURE_ONLINE                --get icon for online friends, might later be changed to afk/dnd icons
-          local socialIcon = BNet_GetClientTexture(gameClient)     --get icon for the friend's application
+          local socialIcon = ""--BNet_GetClientTexture(gameClient)     --get icon for the friend's application
           --local gameName = MenuModule.socialIcons[gameClient].text --name of the application the friend is currently using - can be any game or 'App'/'Mobile'
           local gameName =""
 		  local note = noteText                          --note of the friend, if there is no note it's an empty string
